@@ -75,7 +75,7 @@ public final class Constants {
     public static final double LOWER_SERVO_POS_LIMIT = 0.17; // All the way in
 
     // Elevation system controller CAN IDs
-    public static final int ELEVATOR_TALON_FX = 40;
+    public static final int ELEVATOR_TALON_FX = 6;
     public static final double ELEVATOR_SPEED = 0.6;
 
     // Elevation system encoders and constants
