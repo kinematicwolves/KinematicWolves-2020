@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
@@ -19,8 +20,6 @@ import frc.robot.Constants;
 public class ElevatorPIDSubsystem extends PIDSubsystem {
 
   private final WPI_TalonFX m_elevatorMotor = new WPI_TalonFX(Constants.ELEVATOR_TALON_FX);
-  // private final Encoder m_elevatorEncoder = new Encoder(Constants.ELEVATOR_ENCODER_channel1A,
-  //     Constants.ELEVATOR_ENCODER_channel1B);
 
   double setpoint;
 
@@ -42,12 +41,13 @@ public class ElevatorPIDSubsystem extends PIDSubsystem {
     super(new PIDController(Constants.ELEVATOR_kP, Constants.ELEVATOR_kI, Constants.ELEVATOR_kD));
     getController().setTolerance(Constants.ELEVATOR_TOLERANCE);
     setSetpoint(Constants.ElevatorInitialPosition);
+    m_elevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
 
   }
 
-  // public double moveElevatorSetpoint(double input){
-  //   setpoint += input; // Input comes from the controller
-  // }
+  public void moveElevatorSetpoint(double input){
+    setpoint += input; // Input comes from the controller
+  }
 
   @Override
   public void useOutput(double output, double setpoint) {
