@@ -42,7 +42,7 @@ public class ElevatorPIDSubsystem extends PIDSubsystem {
     getController().setTolerance(Constants.ELEVATOR_TOLERANCE);
     setSetpoint(Constants.ElevatorInitialPosition);
     m_elevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-
+    this.setpoint = Constants.ElevatorInitialPosition;
   }
 
   public void moveElevatorSetpoint(double input){
@@ -54,6 +54,7 @@ public class ElevatorPIDSubsystem extends PIDSubsystem {
     // m_elevatorMotor.setVoltage(output + m_elevatorFeedforward.calculate(setpoint));
     m_elevatorMotor.set(ControlMode.Position, setpoint); // Ouput is encoder ticks
     SmartDashboard.putNumber("Elevator Encoder Distance", getMeasurement());
+    SmartDashboard.putNumber("Setpoint (counts)", getMeasurement())
   }
 
   @Override
