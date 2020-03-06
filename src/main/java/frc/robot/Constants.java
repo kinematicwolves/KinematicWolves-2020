@@ -87,6 +87,7 @@ public final class Constants {
     public static double ELEVATOR_kD = 0;
     public static double ELEVATOR_TOLERANCE = 4.5;
     public static double ElevatorInitialPosition = 0;
+    public static int  FINAL_ELEVATOR_POSITION = 5000; // Encoder counts (for now)
 
     public static int CLIMB_POSITION_COUNTS = 5000;
     
