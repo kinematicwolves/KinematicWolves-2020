@@ -37,7 +37,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private final WPI_TalonFX rightSlave = new WPI_TalonFX(Constants.RIGHT_MOTOR_2); // This is the CAN ID for the device
   private final WPI_TalonFX leftMaster = new WPI_TalonFX(Constants.LEFT_MOTOR_1); // This is the CAN ID for the device
   private final WPI_TalonFX leftSlave = new WPI_TalonFX(Constants.LEFT_MOTOR_2); // This is the CAN ID for the device
-
+  
   // IMU definition
   private final ADIS16448_IMU imu = new ADIS16448_IMU(IMUAxis.kX, SPI.Port.kMXP, 4); // This is the gyroscope definition
 
@@ -186,7 +186,9 @@ public class DriveTrainSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Left Distance", leftDistance);
     SmartDashboard.putNumber("Left Wheel Speeds", left_wheel_speed);
     SmartDashboard.putNumber("Yaw Angle", yaw_angle);    
-
+    SmartDashboard.putNumber("AccelerationX", imu.getAccelInstantX());
+    SmartDashboard.putNumber("AccelerationY", imu.getAccelInstantY());
+    SmartDashboard.putNumber("AccelerationZ", imu.getAccelInstantZ());
   }
 
   public void move_with_joysticks(Joystick driver_controller) {
