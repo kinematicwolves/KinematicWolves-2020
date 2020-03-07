@@ -38,6 +38,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
  
   private void configureFeedback(){
+    m_elevatorMotor.configFactoryDefault();
     m_elevatorMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, Constants.ELEVATOR_PID_LOOP,
     Constants.ELEVATOR_kTIMEOUT);
     m_elevatorMotor.config_kF(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kF);
