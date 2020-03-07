@@ -85,10 +85,19 @@ public final class Constants {
     public static double ELEVATOR_kP = 1;
     public static double ELEVATOR_kI = 0;
     public static double ELEVATOR_kD = 0;
+    public static double ELEVATOR_kF = 1.5;
     public static double ELEVATOR_TOLERANCE = 4.5;
-    public static double ElevatorInitialPosition = 0;
 
-    public static int CLIMB_POSITION_COUNTS = 5000;
+    public static double ELEVATOR_INIT_POSITION = 0;
+    public static double MAX_ELEVATOR_HEIGHT = 100;
+    public static double MIN_ELEVATOR_HEIGHT = 0; 
+    public static double ELEV_GEAR_RATIO = 28.3; 
+    public static double ELEVATOR_SETPOINT_SCALING = 10.0;
+
+    public static double CLIMB_POSITION_COUNTS = 5000;
+
+    public static int ELEVATOR_PID_LOOP = 0;
+    public static int ELEVATOR_kTIMEOUT = 0;
     
     // Controller constants
     public static final double visionPID_Clip = 0.4;

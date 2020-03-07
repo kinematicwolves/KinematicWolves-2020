@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.*;
 import frc.robot.subsystems.DriveTrainSubsystem;
-import frc.robot.subsystems.ElevatorPIDSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
@@ -31,7 +31,7 @@ public class RobotContainer {
   private final DriveTrainSubsystem m_driveTrain = new DriveTrainSubsystem();
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
-  private final ElevatorPIDSubsystem m_elevatorSubsystem = new ElevatorPIDSubsystem();
+  private final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
 
 
   // Controllers
@@ -56,7 +56,7 @@ public class RobotContainer {
   }
 
   public void setDisabledState(){
-    m_elevatorSubsystem.setSetpoint(Constants.CLIMB_POSITION_COUNTS);
+
     if (m_driveTrain.isHighGear){
       new ShiftGear(m_driveTrain);
     }

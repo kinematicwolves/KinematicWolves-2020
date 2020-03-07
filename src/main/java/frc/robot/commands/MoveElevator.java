@@ -8,20 +8,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ElevatorPIDSubsystem;
+import frc.robot.Constants;
+import frc.robot.subsystems.ElevatorSubsystem;
 
 public class MoveElevator extends CommandBase {
   /**
    * Creates a new MoveElevator.
    */
 
-  ElevatorPIDSubsystem m_elevatorSubsystem;
-  double speed;
+  ElevatorSubsystem m_elevatorSubsystem;
+  double setpointAdjustmentFactor;
   double setpoint;
 
-  public MoveElevator(ElevatorPIDSubsystem elevatorSubsystem, double speed) {
+  public MoveElevator(ElevatorSubsystem elevatorSubsystem, double setpointAdjustmentFactor) {
     this.m_elevatorSubsystem = elevatorSubsystem;
-    this.speed = speed;
+    this.setpointAdjustmentFactor = setpointAdjustmentFactor;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_elevatorSubsystem);
@@ -35,8 +36,8 @@ public class MoveElevator extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    setpoint += speed;
-    m_elevatorSubsystem.setSetpoint(setpoint);
+    setpoint += setpointAdjustmentFactor * Constants.ELEVATOR_SETPOINT_SCALING;
+    m_elevatorSubsystem.moveElevatorSetpoint(setpoint);
   }
 
   // Called once the command ends or is interrupted.

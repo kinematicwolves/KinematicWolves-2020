@@ -9,16 +9,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.ElevatorPIDSubsystem;;
+import frc.robot.subsystems.ElevatorSubsystem;;
 
 public class RobotClimb extends CommandBase {
   /**
    * Creates a new RobotClimb.
    */
 
-  private final ElevatorPIDSubsystem m_elevatorSubsystem;
+  private final ElevatorSubsystem m_elevatorSubsystem;
 
-  public RobotClimb(ElevatorPIDSubsystem elevatorSubsystem) {
+  public RobotClimb(ElevatorSubsystem elevatorSubsystem) {
     this.m_elevatorSubsystem = elevatorSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_elevatorSubsystem);
@@ -27,7 +27,7 @@ public class RobotClimb extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_elevatorSubsystem.setSetpoint(Constants.CLIMB_POSITION_COUNTS);
+    m_elevatorSubsystem.setPositionSetpoint(Constants.CLIMB_POSITION_COUNTS);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -43,6 +43,6 @@ public class RobotClimb extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_elevatorSubsystem.atSetpoint();
+    return m_elevatorSubsystem.getError() < Math.abs(Constants.ELEVATOR_TOLERANCE);
   }
 }
