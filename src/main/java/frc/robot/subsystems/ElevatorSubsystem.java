@@ -39,6 +39,7 @@ public class ElevatorSubsystem extends SubsystemBase {
  
   private void configureFeedback(){
     m_elevatorMotor.configFactoryDefault();
+    this.setpoint = m_elevatorMotor.getSelectedSensorPosition();
     m_elevatorMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, Constants.ELEVATOR_PID_LOOP,
     Constants.ELEVATOR_kTIMEOUT);
     m_elevatorMotor.config_kF(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kF);
@@ -48,9 +49,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     m_elevatorMotor.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero, Constants.ELEVATOR_kTIMEOUT);
   }
 
-  public double moveElevatorSetpoint(double setpointAdjustmentFactor){
+  public void moveElevatorSetpoint(double setpointAdjustmentFactor){
     // Move elevator setpoint by setpointAdjustmentFactor
-    return setpoint += setpointAdjustmentFactor;
+    this.setpoint += setpointAdjustmentFactor;
+    m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(setpoint));
   }
 
   public void setPositionSetpoint(double setpoint){
