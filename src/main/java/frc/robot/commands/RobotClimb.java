@@ -16,18 +16,10 @@ public class RobotClimb extends CommandBase {
    * Creates a new RobotClimb.
    */
 
-<<<<<<< HEAD
-  private final ElevatorPIDSubsystem m_elevatorSubsystem;
-  int position_counts;
-
-  public RobotClimb(ElevatorPIDSubsystem elevatorSubsystem, int position_counts) {
-=======
   private final ElevatorSubsystem m_elevatorSubsystem;
 
   public RobotClimb(ElevatorSubsystem elevatorSubsystem) {
->>>>>>> f8b8a16de4a1729d0ed80b1c22640f261408a623
     this.m_elevatorSubsystem = elevatorSubsystem;
-    this.position_counts = position_counts;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_elevatorSubsystem);
   }
@@ -35,11 +27,7 @@ public class RobotClimb extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-<<<<<<< HEAD
-    m_elevatorSubsystem.setSetpoint(position_counts);
-=======
     m_elevatorSubsystem.setPositionSetpoint(Constants.CLIMB_POSITION_COUNTS);
->>>>>>> f8b8a16de4a1729d0ed80b1c22640f261408a623
   }
 
   // Called every time the scheduler runs while the command is scheduled.

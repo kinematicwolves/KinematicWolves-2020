@@ -83,7 +83,7 @@ public class RobotContainer {
     final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
 
     m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED));
-    m_dPadDown.whenPressed(new RobotClimb(m_elevatorSubsystem, Constants.CLIMB_POSITION_COUNTS));
+    m_dPadDown.whenPressed(new RobotClimb(m_elevatorSubsystem));
 
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
