@@ -52,7 +52,7 @@ public final class Constants {
     public static final int LEFT_MOTOR_1 = 5;
     public static final int LEFT_MOTOR_2 = 12;
 
-    public static double DRIVE_CURRENT_RAMP_TIME = 0.75;
+    public static double DRIVE_CURRENT_RAMP_TIME = 0.65;
 
     // This does not exist yet!
     public static final int TOP_CONVEYOR_MOTOR = 1;

@@ -39,7 +39,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private final WPI_TalonFX leftSlave = new WPI_TalonFX(Constants.LEFT_MOTOR_2); // This is the CAN ID for the device
 
   // IMU definition
-  private final ADIS16448_IMU imu = new ADIS16448_IMU(IMUAxis.kX, SPI.Port.kMXP, 4); // This is the gyroscope definition
+  private final ADIS16448_IMU imu = new ADIS16448_IMU(IMUAxis.kY, SPI.Port.kMXP, 4); // This is the gyroscope definition
 
   // Hydraulics definition
   private final DoubleSolenoid DriveTrainSwitch = new DoubleSolenoid(Constants.PNEUMATIC_CONTROL_MODULE, Constants.DRVTRN_SOL_FWD_CHN, Constants.DRVTRN_SOL_RVS_CHN); // This is the definition of the solenoid for switching gears in the drivetrain 
@@ -81,10 +81,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     rightMaster.configOpenloopRamp(Constants.DRIVE_CURRENT_RAMP_TIME);
     leftMaster.configOpenloopRamp(Constants.DRIVE_CURRENT_RAMP_TIME);
 
-    leftMaster.setNeutralMode(NeutralMode.Coast);
-    leftSlave.setNeutralMode(NeutralMode.Coast);
-    rightMaster.setNeutralMode(NeutralMode.Coast);
-    rightSlave.setNeutralMode(NeutralMode.Coast);
+    leftMaster.setNeutralMode(NeutralMode.Brake);
+    leftSlave.setNeutralMode(NeutralMode.Brake);
+    rightMaster.setNeutralMode(NeutralMode.Brake);
+    rightSlave.setNeutralMode(NeutralMode.Brake);
 
     // Set master slave relation
     rightSlave.follow(rightMaster);
