@@ -67,6 +67,13 @@ public final class Constants {
     // Shooter controller CAN IDs
     public static final int SPIN_SHOOTER_MOTOR_1 = 2;
     public static final int SPIN_SHOOTER_MOTOR_2 = 3;
+    public static final int SHOOTER_PID_SLOT = 0;
+    public static final double SHOOTER_kP = 0;
+    public static final double SHOOTER_kI = 0;
+    public static final double SHOOTER_kD = 0;
+    public static final double SHOOTER_kF = 0;
+    public static final int SHOOTER_PID_TIMEOUT = 0;
+    public static final int SHOOTER_ENCODER_CPR = 4096;
 
     // PWM channels for servo controller linear actuators
     public static final int LINEAR_ACTUATOR_1 = 1;
