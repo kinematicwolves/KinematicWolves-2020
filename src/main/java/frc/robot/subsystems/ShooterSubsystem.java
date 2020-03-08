@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.sensors.CANCoder;
 
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -29,8 +30,9 @@ public class ShooterSubsystem extends SubsystemBase {
   public static Servo angleActuator_1 = new Servo(Constants.LINEAR_ACTUATOR_1); // PWM controlled
   public static Servo angleActuator_2 = new Servo(Constants.LINEAR_ACTUATOR_2); // PWM controlled
 
-  public static CANCoder shooterEncoder = new CANCoder(Constants.SPIN_SHOOTER_MOTOR_1);
-
+  // Need a static and velocity gain for the motors for below FF term, need to use setVoltage() method with it
+  // public static SimpleMotorFeedforward shooterFeedforward = new SimpleMotorFeedforward(ks, kv);
+  
   public ShooterSubsystem(){
     spinShooterTalon_1.setInverted(true);
     spinShooterTalon_2.setInverted(true);

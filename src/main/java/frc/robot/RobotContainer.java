@@ -23,7 +23,7 @@ import frc.robot.commands.ShootBallSequence;
 import frc.robot.commands.TurnLeftLineUp;
 import frc.robot.commands.TurnLimelightOff;
 import frc.robot.commands.TurnRightLineUp;
-import frc.robot.commands.AutonLineUpShootBall;
+import frc.robot.commands.*;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
@@ -90,7 +90,7 @@ public class RobotContainer {
 
     //final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
     final JoystickButton m_bButton = new JoystickButton(manipulatorController, Constants.B_BUTTON);
-    // final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
+    final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
     final JoystickButton m_yButton = new JoystickButton(manipulatorController, Constants.Y_BUTTON);
     // final JoystickButton m_dPadUp = new JoystickButton(manipulatorController, Constants.D_PAD_UP);
     // final JoystickButton m_dPadDown = new JoystickButton(manipulatorController, Constants.D_PAD_DOWN);
@@ -99,7 +99,7 @@ public class RobotContainer {
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
     m_aButton.whileHeld(new SequentialIntakeBall(m_turretSubsystem, Constants.INTAKE_WHEEL_SPEED, Constants.LOWER_CONVEYOR_SPEED));
-    //m_xButton.whenPressed(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
+    m_xButton.whenPressed(new ShootBallPID(m_shooterSubsystem, m_visionSubsystem, m_turretSubsystem));
     m_bButton.whileHeld(new ReverseConveyors(m_turretSubsystem));
     m_yButton.whileHeld(new ShootBallSequence(m_shooterSubsystem, m_visionSubsystem, m_turretSubsystem));
   
