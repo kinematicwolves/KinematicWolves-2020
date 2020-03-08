@@ -19,6 +19,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   private final WPI_TalonFX m_elevatorMotor = new WPI_TalonFX(Constants.ELEVATOR_TALON_FX);
 
+  double init_setpoint;
   double setpoint;
 
   // private final ElevatorFeedforward m_elevatorFeedforward =
@@ -34,12 +35,13 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public ElevatorSubsystem() {
     configureFeedback();
+    this.init_setpoint = m_elevatorMotor.getSelectedSensorPosition(Constants.ELEVATOR_PID_LOOP);
+    this.setpoint += this.init_setpoint;
     
   }
  
   private void configureFeedback(){
     m_elevatorMotor.configFactoryDefault();
-    this.setpoint = m_elevatorMotor.getSelectedSensorPosition();
     m_elevatorMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, Constants.ELEVATOR_PID_LOOP,
     Constants.ELEVATOR_kTIMEOUT);
     m_elevatorMotor.config_kF(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kF);
@@ -87,7 +89,6 @@ public class ElevatorSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Elevator Position Counts", getPosition_counts());
     SmartDashboard.putNumber("Elevator Error", getError());
-    SmartDashboard.putNumber("Elevator setpoint", setpoint);
-    setPositionSetpoint(setpoint);
+    SmartDashboard.putNumber("Elevator setpoint (counts)", setpoint - init_setpoint);
   }
 }
