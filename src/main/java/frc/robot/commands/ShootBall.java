@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.Utilities;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.subsystems.TurretSubsystem;;
@@ -42,11 +43,11 @@ public class ShootBall extends CommandBase {
     m_shooterSubsystem.move_top_conveyor(Constants.UPPER_CONVEYOR_SPEED);
     m_turretSubsystem.override_Lower_conveyor(Constants.UPPER_CONVEYOR_SPEED);
     
-    // double distance = m_visionSubsystem.getDistance(); // TODO: Units
+    double distance = m_visionSubsystem.getDistance(); // TODO: Units
     // double distance = 10; // feet
     // double speed = Utilities.linearInterpolation(Constants.distances, Constants.speeds, distance);
     
-    double speed = 1;  
+    double speed = .75;  
     
     // System.out.print("Speed calculated by table:");
     // System.out.print(speed);

@@ -37,9 +37,9 @@ public class AdjustShooterAngle extends CommandBase {
   @Override
   public void initialize() {
     // m_shooterSubsystem.setLinearActuatorPosition(position);
-    targetDistance = m_visionSubsystem.getFilteredDistance();
-    actuatorPosition = Utilities.linearInterpolation(Constants.distances, Constants.position, targetDistance);
-    m_shooterSubsystem.setLinearActuatorPosition(actuatorPosition);
+    //targetDistance = m_visionSubsystem.getFilteredDistance();
+    // actuatorPosition = Utilities.linearInterpolation(Constants.distances, Constants.position, targetDistance);
+    // m_shooterSubsystem.setLinearActuatorPosition(actuatorPosition);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

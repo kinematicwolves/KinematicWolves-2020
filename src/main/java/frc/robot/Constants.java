@@ -134,18 +134,18 @@ public final class Constants {
 
     // Calibration of shooter
     public static final double[] distances = {
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 22, 22.5, 23, 23.2, 23.5, 24
     }; // feet, need to change to inches
 
     // Speed (% output) of the shooter motors
     public static final double[] speeds = {
-      0.66, 0.68, 0.70, 0.75, 0.75, 0.75, 0.80, 0.90, 0.90, 0.90, 0.90, 0.90
+      0.45, 0.45, 0.50, 0.50, 0.55, 0.55, 0.60, 0.60, 0.65, 0.65, 0.69, 0.75, 0.75, 0.85, 0.85, 0.85, 0.88, 0.88, 0.88
     };
 
     // Position (PWM command) of the linear actuators
-    public static final double[] position = {
-      0.85, 0.75, 0.75, 0.65, 0.65, 0.65, 0.55, 0.55, 0.55, 0.45, 0.45, 0.45, 0.45
-    };
+    // public static final double[] position = {
+      // 0.85, 0.75, 0.75, 0.65, 0.65, 0.65, 0.55, 0.55, 0.55, 0.45, 0.45, 0.45, 0.45
+    // };
 
     // Parameters for vision subsystem
     public static final float LIMELIGHT_VERTICAL_ANGLE = (float) 10;    // Limelight vertical angle degrees

@@ -8,8 +8,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.CANCoder;
 
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import java.lang.Math;
@@ -24,6 +26,9 @@ public class ShooterSubsystem extends SubsystemBase {
   public static WPI_TalonSRX topConveyorTalon = new WPI_TalonSRX(Constants.TOP_CONVEYOR_MOTOR);
   public static Servo angleActuator_1 = new Servo(Constants.LINEAR_ACTUATOR_1); // PWM controlled
   public static Servo angleActuator_2 = new Servo(Constants.LINEAR_ACTUATOR_2); // PWM controlled
+
+  // Create CAN encoder
+  // public static CANCoder shooterEncoder = new CANCoder(Constants.SPIN_SHOOTER_MOTOR_1);
 
   public ShooterSubsystem(){
     spinShooterTalon_1.setInverted(true);
@@ -74,5 +79,6 @@ public class ShooterSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     spinShooterTalon_1.getMotorOutputVoltage();
     spinShooterTalon_2.getMotorOutputVoltage();
+    // SmartDashboard.putNumber("Shooter Motor Speed", shooterEncoder.getVelocity())
   }
 }

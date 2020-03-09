@@ -27,14 +27,14 @@ public class InitializeShooterMotor extends CommandBase {
     m_shooterSubsystem = shooterSubsystem;
     addRequirements(m_shooterSubsystem);
     this.speed = speed;
-    this.timer = 0;
+    
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_shooterSubsystem.shootBall(speed);
-
+    this.timer = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
