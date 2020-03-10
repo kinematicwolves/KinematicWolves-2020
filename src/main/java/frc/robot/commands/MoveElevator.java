@@ -36,7 +36,7 @@ public class MoveElevator extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    setpoint += setpointAdjustmentFactor * Constants.ELEVATOR_SETPOINT_SCALING;
+    setpoint += this.setpointAdjustmentFactor * Constants.ELEVATOR_SETPOINT_SCALING;
     m_elevatorSubsystem.moveElevatorSetpoint(setpoint);
   }
 

@@ -20,7 +20,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   private final WPI_TalonFX m_elevatorMotor = new WPI_TalonFX(Constants.ELEVATOR_TALON_FX);
 
   double init_setpoint;
-  double setpoint;
+  double setpoint = 0;
 
   // private final ElevatorFeedforward m_elevatorFeedforward =
   //     new ElevatorFeedforward(Constants.kS,
@@ -37,6 +37,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     configureFeedback();
     this.init_setpoint = m_elevatorMotor.getSelectedSensorPosition(Constants.ELEVATOR_PID_LOOP);
     this.setpoint += this.init_setpoint;
+    m_elevatorMotor.setInverted(true);
     
   }
  
@@ -48,17 +49,19 @@ public class ElevatorSubsystem extends SubsystemBase {
     m_elevatorMotor.config_kP(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kP);
     m_elevatorMotor.config_kI(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kI);
     m_elevatorMotor.config_kD(Constants.ELEVATOR_PID_LOOP, Constants.ELEVATOR_kD);
+    
     m_elevatorMotor.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero, Constants.ELEVATOR_kTIMEOUT);
   }
 
   public void moveElevatorSetpoint(double setpointAdjustmentFactor){
     // Move elevator setpoint by setpointAdjustmentFactor
     this.setpoint += setpointAdjustmentFactor;
-    m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(setpoint));
+    m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(this.setpoint));
   }
 
   public void setPositionSetpoint(double setpoint){
-    m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(setpoint));
+    this.setpoint = setpoint + init_setpoint;
+    m_elevatorMotor.set(ControlMode.Position, this.setpoint);
   }
 
   public double getPosition_counts(){
@@ -89,6 +92,6 @@ public class ElevatorSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Elevator Position Counts", getPosition_counts());
     SmartDashboard.putNumber("Elevator Error", getError());
-    SmartDashboard.putNumber("Elevator setpoint (counts)", setpoint - init_setpoint);
+    SmartDashboard.putNumber("Elevator setpoint (counts)", this.setpoint);
   }
 }
