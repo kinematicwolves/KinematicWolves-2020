@@ -17,12 +17,12 @@ public class MoveElevator extends CommandBase {
    */
 
   ElevatorSubsystem m_elevatorSubsystem;
-  double setpointAdjustmentFactor;
+  double speed;
   double setpoint;
 
-  public MoveElevator(ElevatorSubsystem elevatorSubsystem, double setpointAdjustmentFactor) {
+  public MoveElevator(ElevatorSubsystem elevatorSubsystem, double speed) {
     this.m_elevatorSubsystem = elevatorSubsystem;
-    this.setpointAdjustmentFactor = setpointAdjustmentFactor;
+    this.speed = speed;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_elevatorSubsystem);
@@ -31,13 +31,14 @@ public class MoveElevator extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_elevatorSubsystem.moveElevatorOpenLoop(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    setpoint += setpointAdjustmentFactor * Constants.ELEVATOR_SETPOINT_SCALING;
-    m_elevatorSubsystem.moveElevatorSetpoint(setpoint);
+    // setpoint += setpointAdjustmentFactor * Constants.ELEVATOR_SETPOINT_SCALING;
+    // m_elevatorSubsystem.moveElevatorSetpoint(setpoint);
   }
 
   // Called once the command ends or is interrupted.
@@ -48,6 +49,6 @@ public class MoveElevator extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

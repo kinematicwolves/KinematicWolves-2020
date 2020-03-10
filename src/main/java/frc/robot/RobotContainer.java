@@ -76,21 +76,22 @@ public class RobotContainer {
 
     //final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
     // final JoystickButton m_bButton = new JoystickButton(manipulatorController, Constants.B_BUTTON);
-    // final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
+    final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
     final JoystickButton m_yButton = new JoystickButton(manipulatorController, Constants.Y_BUTTON);
     final JoystickButton m_dPadUp = new JoystickButton(manipulatorController, Constants.D_PAD_UP);
     final JoystickButton m_dPadDown = new JoystickButton(manipulatorController, Constants.D_PAD_DOWN);
     final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
 
-    m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED));
-    m_dPadDown.whenPressed(new RobotClimb(m_elevatorSubsystem));
+    // m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED));
+    // m_dPadDown.whenPressed(new RobotClimb(m_elevatorSubsystem));
 
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
-    m_aButton.whileHeld(new IntakeBall(m_turretSubsystem, Constants.INTAKE_WHEEL_SPEED, Constants.LOWER_CONVEYOR_SPEED));
-    //m_xButton.whenPressed(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
+    // m_aButton.whileHeld(new IntakeBall(m_turretSubsystem, Constants.INTAKE_WHEEL_SPEED, Constants.LOWER_CONVEYOR_SPEED));
+    m_xButton.whenPressed(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED));
+    m_xButton.whenPressed(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
     //m_bButton.whenPressed(new TurnRightLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
-    m_yButton.whileHeld(new ShootBall(m_shooterSubsystem, m_visionSubsystem));
+    // m_yButton.whileHeld(new ShootBall(m_shooterSubsystem, m_visionSubsystem));
     
     // Driver Controller
 

@@ -76,7 +76,7 @@ public final class Constants {
 
     // Elevation system controller CAN IDs
     public static final int ELEVATOR_TALON_FX = 6;
-    public static final double ELEVATOR_SPEED = 0.6;
+    public static final double ELEVATOR_SPEED = 0.2;
 
     // Elevation system encoders and constants
     public static final int ELEVATOR_ENCODER_channel1A = 5;

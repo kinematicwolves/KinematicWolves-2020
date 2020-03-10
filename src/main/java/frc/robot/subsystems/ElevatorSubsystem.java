@@ -73,6 +73,10 @@ public class ElevatorSubsystem extends SubsystemBase {
     m_elevatorMotor.set(0);
   }
 
+  public void moveElevatorOpenLoop(double speed){
+    m_elevatorMotor.set(speed);
+  }
+
   private double checkElevatorSetpoint(double setpoint){
     if (setpoint > Constants.MAX_ELEVATOR_HEIGHT){
       setpoint = Constants.MAX_ELEVATOR_HEIGHT;
