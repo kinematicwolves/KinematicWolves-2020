@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
@@ -37,6 +38,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     // configureFeedback();
     // this.init_setpoint = m_elevatorMotor.getSelectedSensorPosition(Constants.ELEVATOR_PID_LOOP);
     // this.setpoint += this.init_setpoint;
+    m_elevatorMotor.setNeutralMode(NeutralMode.Coast);
     m_elevatorMotor.setInverted(true);
     
   }
@@ -77,7 +79,8 @@ public class ElevatorSubsystem extends SubsystemBase {
   // }
 
   public void moveElevatorOpenLoop(double speed){
-    m_elevatorMotor.set(ControlMode.PercentOutput, speed);
+    SmartDashboard.putNumber("Elevator speed", speed);
+    m_elevatorMotor.set(speed);
   }
 
   private double checkElevatorSetpoint(double setpoint){

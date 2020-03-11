@@ -28,7 +28,7 @@ import frc.robot.subsystems.VisionSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final TurretSubsystem m_turretSubsystem = new TurretSubsystem();
-  private final DriveTrainSubsystem m_driveTrain = new DriveTrainSubsystem();
+  // private final DriveTrainSubsystem m_driveTrain = new DriveTrainSubsystem();
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
@@ -54,15 +54,15 @@ public class RobotContainer {
   }
 
   public void setDefaultCommands(){
-    m_driveTrain.setDefaultCommand(new DriveRobotWithJoysticks(m_driveTrain, driverController));
+    // m_driveTrain.setDefaultCommand(new DriveRobotWithJoysticks(m_driveTrain, driverController));
   }
 
   public void setDisabledState(){
 
-    if (m_driveTrain.isHighGear){
-      new ShiftGear(m_driveTrain);
+    // if (m_driveTrain.isHighGear){
+      // new ShiftGear(m_driveTrain);
     }
-  }
+
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -90,9 +90,9 @@ public class RobotContainer {
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
     // m_aButton.whileHeld(new IntakeBall(m_turretSubsystem, Constants.INTAKE_WHEEL_SPEED, Constants.LOWER_CONVEYOR_SPEED));
-    m_yButton.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED));
-    m_xButton.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
-    m_bButton.whenPressed(new ShootBall(m_shooterSubsystem, m_visionSubsystem));
+    m_yButton.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED)); // down
+    m_xButton.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED)); // up
+    // m_bButton.whenPressed(new ShootBall(m_shooterSubsystem, m_visionSubsystem));
     // m_yButton.whileHeld(new ShootBall(m_shooterSubsystem, m_visionSubsystem));
     
     // Driver Controller
@@ -103,9 +103,9 @@ public class RobotContainer {
     // final JoystickButton d_yButton = new JoystickButton(driverController, Constants.Y_BUTTON);
     final JoystickButton d_aButton = new JoystickButton(driverController, Constants.A_BUTTON); 
 
-    d_aButton.whenPressed(new ShiftGear(m_driveTrain));
-    d_xButton.whenPressed(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
-    d_bButton.whenPressed(new TurnRightLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
+    // d_aButton.whenPressed(new ShiftGear(m_driveTrain));
+    // d_xButton.whenPressed(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
+    // d_bButton.whenPressed(new TurnRightLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
 
 
   }
