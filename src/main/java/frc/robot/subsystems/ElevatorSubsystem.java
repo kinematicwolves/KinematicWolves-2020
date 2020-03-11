@@ -34,9 +34,9 @@ public class ElevatorSubsystem extends SubsystemBase {
    */
 
   public ElevatorSubsystem() {
-    configureFeedback();
-    this.init_setpoint = m_elevatorMotor.getSelectedSensorPosition(Constants.ELEVATOR_PID_LOOP);
-    this.setpoint += this.init_setpoint;
+    // configureFeedback();
+    // this.init_setpoint = m_elevatorMotor.getSelectedSensorPosition(Constants.ELEVATOR_PID_LOOP);
+    // this.setpoint += this.init_setpoint;
     m_elevatorMotor.setInverted(true);
     
   }
@@ -53,27 +53,31 @@ public class ElevatorSubsystem extends SubsystemBase {
     m_elevatorMotor.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero, Constants.ELEVATOR_kTIMEOUT);
   }
 
-  public void moveElevatorSetpoint(double setpointAdjustmentFactor){
-    // Move elevator setpoint by setpointAdjustmentFactor
-    this.setpoint += setpointAdjustmentFactor;
-    m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(this.setpoint));
-  }
+  // public void moveElevatorSetpoint(double setpointAdjustmentFactor){
+  //   // Move elevator setpoint by setpointAdjustmentFactor
+  //   this.setpoint += setpointAdjustmentFactor;
+  //   // m_elevatorMotor.set(ControlMode.Position, checkElevatorSetpoint(this.setpoint));
+  // }
 
-  public void setPositionSetpoint(double setpoint){
-    this.setpoint = setpoint + init_setpoint;
-    m_elevatorMotor.set(ControlMode.Position, this.setpoint);
-  }
+  // public void setPositionSetpoint(double setpoint){
+  //   this.setpoint = setpoint + init_setpoint;
+  //   // m_elevatorMotor.set(ControlMode.Position, this.setpoint);
+  // }
 
-  public double getPosition_counts(){
-    return   m_elevatorMotor.getSelectedSensorPosition();
-  }
+  // public double getPosition_counts(){
+  //   return   m_elevatorMotor.getSelectedSensorPosition();
+  // }
 
-  public double getError(){
-    return m_elevatorMotor.getClosedLoopError();
-  }
+  // public double getError(){
+  //   return m_elevatorMotor.getClosedLoopError();
+  // }
 
-  public void stopElevator() {
-    m_elevatorMotor.set(0);
+  // public void stopElevator() {
+  //   m_elevatorMotor.set(0);
+  // }
+
+  public void moveElevatorOpenLoop(double speed){
+    m_elevatorMotor.set(ControlMode.PercentOutput, speed);
   }
 
   private double checkElevatorSetpoint(double setpoint){
@@ -90,8 +94,8 @@ public class ElevatorSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Elevator Position Counts", getPosition_counts());
-    SmartDashboard.putNumber("Elevator Error", getError());
-    SmartDashboard.putNumber("Elevator setpoint (counts)", this.setpoint);
+    // SmartDashboard.putNumber("Elevator Position Counts", getPosition_counts());
+    // SmartDashboard.putNumber("Elevator Error", getError());
+    // SmartDashboard.putNumber("Elevator setpoint (counts)", this.setpoint);
   }
 }
