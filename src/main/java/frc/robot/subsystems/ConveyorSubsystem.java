@@ -223,8 +223,11 @@ public class ConveyorSubsystem extends SubsystemBase {
     else if (!ballDetectedSensor1 && ballDetectedSensor2 && ballDetectedSensor3 && ballDetectedSensor4){
       return "state 7";
     }
-    else (ballDetectedSensor1 && ballDetectedSensor2 && ballDetectedSensor3 && ballDetectedSensor4){
+    else if (ballDetectedSensor1 && ballDetectedSensor2 && ballDetectedSensor3 && ballDetectedSensor4){
       return "done 9";
+    }
+    else {
+      return "nothing";
     }
   }
 
