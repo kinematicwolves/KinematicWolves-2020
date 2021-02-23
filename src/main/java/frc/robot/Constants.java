@@ -77,7 +77,11 @@ public final class Constants {
     public static final int ELEVATOR_TALON_FX = 6;
 
     // Digit input
-    public static final int BALL_INDEX_SENSOR_DI_NUM = 9;
+    public static final int BALL_INDEX_SENSOR_1_DI_NUM = 6;
+    public static final int BALL_INDEX_SENSOR_2_DI_NUM = 7;
+    public static final int BALL_INDEX_SENSOR_3_DI_NUM = 8;
+    public static final int BALL_INDEX_SENSOR_4_DI_NUM = 9;
+
     
     // Controller constants
     public static final double visionPID_Clip = 0.4;
@@ -161,6 +165,7 @@ public final class Constants {
 	  public static int RB_BUTTON;
 
     // Motor speeds
+    public static final double INTAKE_SPEED = 0.60;
     public static final double UPPER_CONVEYOR_SPEED = 0.7;
     public static final double LOWER_CONVEYOR_SPEED = 0.75;
     public static final double INTAKE_WHEEL_SPEED = 0.4;
