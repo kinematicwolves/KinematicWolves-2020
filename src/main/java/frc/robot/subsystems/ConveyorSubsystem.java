@@ -22,6 +22,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   public boolean ballDetectedSensor3 = false;
   public boolean ballDetectedSensor4 = false;
  
+  public boolean intakeExtended = false;
   //                                       [Index 0]                  [Index 1]              [Index 2]               [Index 3]
   // Add a boolean array containing each of the ballDetectedSensor readings
   // public boolean[] ballDetectedArray = 
@@ -37,11 +38,25 @@ public class ConveyorSubsystem extends SubsystemBase {
   public static WPI_TalonSRX intakeTalon = new WPI_TalonSRX(Constants.INTAKE_MOTOR);
   public static WPI_TalonSRX topConveyorTalon = new WPI_TalonSRX(Constants.TOP_CONVEYOR_MOTOR);
 
+  public static DoubleSolenoid intakeSwitch = new DoubleSolenoid(Constants.PNEUMATIC_CONTROL_MODULE, Constants.INTAKE_SOL_FWD_CHN, Constants.INTAKE_SOL_RVS_CHN);
+  
   public ConveyorSubsystem() {
     lowerConveyoorTalon.setNeutralMode(NeutralMode.Coast);
     intakeTalon.setInverted(true);
   }
   
+  public void actuate_intake() {
+    if (intakeExtended) {
+      intakeSwitch.set(Value.kForward);
+      intakeExtended = false;
+    }
+    else {
+      intakeSwitch.set(Value.kReverse);
+      intakeExtended = true;
+    }
+
+  }
+
   public void move_top_conveyor(double speed) {
     topConveyorTalon.set(speed);
   }
