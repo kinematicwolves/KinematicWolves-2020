@@ -25,6 +25,7 @@ import frc.robot.commands.TurnLimelightOff;
 import frc.robot.commands.TurnRightLineUp;
 import frc.robot.commands.AutonLineUpShootBall;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.ActuateIntake;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ConveyorSubsystem;
@@ -91,7 +92,7 @@ public class RobotContainer {
 
     //final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
     final JoystickButton m_bButton = new JoystickButton(manipulatorController, Constants.B_BUTTON);
-    // final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
+    final JoystickButton m_xButton = new JoystickButton(manipulatorController, Constants.X_BUTTON);
     final JoystickButton m_yButton = new JoystickButton(manipulatorController, Constants.Y_BUTTON);
     // final JoystickButton m_dPadUp = new JoystickButton(manipulatorController, Constants.D_PAD_UP);
     // final JoystickButton m_dPadDown = new JoystickButton(manipulatorController, Constants.D_PAD_DOWN);
