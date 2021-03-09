@@ -43,10 +43,13 @@ public final class Constants {
     public static final int left_x_axis = 0;
     public static final int left_y_axis = 1;
 
-    // Drivetrain controller CAN IDs
+   // Solenoid Mappings
     public static final int DRVTRN_SOL_FWD_CHN = 0;
     public static final int DRVTRN_SOL_RVS_CHN = 1;
+    public static final int INTAKE_SOL_FWD_CHN = 7;
+    public static final int INTAKE_SOL_RVS_CHN = 6;
 
+    // Drivetrain controller CAN IDs
     public static final int RIGHT_MOTOR_1 = 11;
     public static final int RIGHT_MOTOR_2 = 8;
     public static final int LEFT_MOTOR_1 = 5;
