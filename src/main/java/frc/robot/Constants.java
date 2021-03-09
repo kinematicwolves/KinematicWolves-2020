@@ -46,8 +46,8 @@ public final class Constants {
    // Solenoid Mappings
     public static final int DRVTRN_SOL_FWD_CHN = 0;
     public static final int DRVTRN_SOL_RVS_CHN = 1;
-    public static final int INTAKE_SOL_FWD_CHN = 2;
-    public static final int INTAKE_SOL_RVS_CHN = 3;
+    public static final int INTAKE_SOL_FWD_CHN = 7;
+    public static final int INTAKE_SOL_RVS_CHN = 6;
 
     // Drivetrain controller CAN IDs
     public static final int RIGHT_MOTOR_1 = 11;

@@ -117,7 +117,7 @@ public class RobotContainer {
     // d_yButton.whenPressed(new AutonLineUpShootBall(m_driveTrain,  m_visionSubsystem,
     // m_shooterSubsystem, m_conveyorSubsystem));
     d_aButton.whenPressed(new TurnLimelightOff(m_visionSubsystem));
-    // d_aButton.whenPressed(new ShiftGear(m_driveTrain));
+    d_aButton.whenPressed(new ShiftGear(m_driveTrain));
     d_xButton.whileHeld(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
     d_bButton.whileHeld(new TurnRightLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
 
