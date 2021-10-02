@@ -42,6 +42,7 @@ public class IntakeBall extends CommandBase {
   public void end(boolean interrupted) {
       m_turretSubsystem.move_intake_motor(0);
       m_turretSubsystem.move_lower_conveyor(0);
+      m_turretSubsystem.move_top_conveyor(0);
   }
 
   // Returns true when the command should end.

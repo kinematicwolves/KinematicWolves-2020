@@ -19,10 +19,12 @@ public class TurretSubsystem extends SubsystemBase {
    */
 
   public static WPI_TalonSRX lowerConveyoorTalon = new WPI_TalonSRX(Constants.LOWER_CONVEYOR_MOTOR);
+  public static WPI_TalonSRX TopConveyoorTalon = new WPI_TalonSRX(Constants.TOP_CONVEYOR_MOTOR);
   public static WPI_TalonSRX intakeTalon = new WPI_TalonSRX(Constants.INTAKE_MOTOR);
 
   public TurretSubsystem() {
     lowerConveyoorTalon.setNeutralMode(NeutralMode.Coast);
+    topConveyoorTalon.setNeutralMode(NeutralMode.Coast);
     intakeTalon.setInverted(true);
   }
 
@@ -30,6 +32,10 @@ public class TurretSubsystem extends SubsystemBase {
 
   public void move_lower_conveyor(double speed){
     lowerConveyoorTalon.set(speed);
+
+  }
+  public void move_top_conveyor(double speed){
+    topConveyoorTalon.set(speed);
 
   }
 
