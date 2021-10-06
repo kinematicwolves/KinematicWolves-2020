@@ -30,7 +30,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
-
+import frc.robot.commands.lastminutecommands.*;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -100,9 +100,9 @@ public class RobotContainer {
 
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
-    m_aButton.whileHeld(new RunIntake(m_conveyorSubsystem));
+    m_aButton.whileHeld(new MoveIntakeAndLowerConveyor(m_conveyorSubsystem));
     m_xButton.whenPressed(new ActuateIntake(m_conveyorSubsystem));
-    m_bButton.whileHeld(new ReverseConveyors(m_conveyorSubsystem));
+    m_bButton.whileHeld(new MoveTopConveyor(m_conveyorSubsystem));
     m_yButton.whileHeld(new ShootBallSequence(m_shooterSubsystem, m_visionSubsystem, m_conveyorSubsystem));
   
     
