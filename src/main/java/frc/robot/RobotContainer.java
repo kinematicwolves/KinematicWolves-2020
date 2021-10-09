@@ -97,13 +97,15 @@ public class RobotContainer {
     // final JoystickButton m_dPadUp = new JoystickButton(manipulatorController, Constants.D_PAD_UP);
     // final JoystickButton m_dPadDown = new JoystickButton(manipulatorController, Constants.D_PAD_DOWN);
     final JoystickButton m_aButton = new JoystickButton(manipulatorController, Constants.A_BUTTON);
+    final JoystickButton m_r2Button = new JoystickButton(manipulatorController, Constant.R2_BUTTON);
 
     //m_dPadUp.whileHeld(new MoveElevator(m_elevatorSubsystem, Constants.ELEVATOR_SPEED);
     //m_dPadDown.whileHeld(new MoveElevator(m_elevatorSubsystem, -1 * Constants.ELEVATOR_SPEED));
-    m_aButton.whileHeld(new MoveIntakeAndLowerConveyor(m_conveyorSubsystem));
-    m_xButton.whenPressed(new ActuateIntake(m_conveyorSubsystem));
-    m_bButton.whileHeld(new MoveTopConveyor(m_conveyorSubsystem));
-    m_yButton.whileHeld(new ShootBallSequence(m_shooterSubsystem, m_visionSubsystem, m_conveyorSubsystem));
+    m_aButton.whileHeld(new MoveTopConveyor(m_conveyorSubsystem) -0.6, 0.6); 
+    m_xButton.whileHeld(new MoveLowerConveyor(m_conveyorSubsystem));
+    m_bButton.whileHeld(new MoveLowerConveyor(m_conveyorSubsystem) -0.6, 0.6);
+    m_yButton.whileHeld(new MoveTopConveyor(m_conveyorSubsystem);
+    m_r2Button.whileHeld(new ShootBallSequence(m_shooterSubsystem, m_visionSubsystem, m_conveyorSubsystem));
   
     
     // Driver Controller
@@ -117,8 +119,8 @@ public class RobotContainer {
     // d_yButton.whenPressed(new AutonLineUpShootBall(m_driveTrain,  m_visionSubsystem,
     // m_shooterSubsystem, m_conveyorSubsystem));
     d_aButton.whenPressed(new TurnLimelightOff(m_visionSubsystem));
-    d_aButton.whenPressed(new ShiftGear(m_driveTrain));
-    d_xButton.whileHeld(new TurnLeftLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
+    d_aButton.whenPressed(new ShiftGear(m_driveTrain));       
+    d_xButton.whileHeld(new IntakeBall(m_driveTrain, m_visionSubsystem, m_shooterSubsystem)); 
     d_bButton.whileHeld(new TurnRightLineUp(m_driveTrain, m_visionSubsystem, m_shooterSubsystem));
 
   }
